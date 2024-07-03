@@ -33,7 +33,7 @@ services:
       interval: 5s
       retries: 5
     ports:
-      - "5437:5432"
+      - "5432:5432"
 
   airflow-init:
     << : *airflow-common
