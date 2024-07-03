@@ -1,5 +1,3 @@
-# SIB6_FinalProject_9
-
 # SIB6_Final Project
 
 # Steps :

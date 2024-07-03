@@ -5,8 +5,6 @@ from datetime import datetime, timedelta
 import finnhub_mongodb_loader
 import sentiment_analysis_loader
 
-
-
 default_args = {
     'owner': 'de-team',
     'depends_on_past': False,
@@ -27,12 +25,12 @@ with DAG(
     tags=['machine-learning']
 ) as dag:
     extract_load = PythonOperator(
-        task_id=f'extract_load',
+        task_id='extract_load',
         python_callable=finnhub_mongodb_loader.extract_load
     )
 
     sa_load = PythonOperator(
-        task_id=f'sa_load',
+        task_id='sa_load',
         python_callable=sentiment_analysis_loader.run
     )
 

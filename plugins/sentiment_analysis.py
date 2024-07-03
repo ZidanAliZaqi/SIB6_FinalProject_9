@@ -18,7 +18,7 @@ class SentimentAnalysis:
         elif analysis.sentiment.polarity == 0:
             data = {'text': self.text, 'sentiment': 'neutral'}
         else:
-            data = {'text': self.text, 'sentiment': 'negative'}
+            data = {'text': self.text, 'sentiment': 'negative'} 
 
         return data
 

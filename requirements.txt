@@ -3,3 +3,4 @@ pymongo
 Flask-SQLAlchemy
 textblob
 finnhub-python
+psycopg2-binary

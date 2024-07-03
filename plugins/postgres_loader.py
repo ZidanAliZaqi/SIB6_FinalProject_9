@@ -1,18 +1,24 @@
 from sqlalchemy import create_engine
 
 
-def load(data, table_name):
+def get_connection():
     user = 'airflow'
     passwd = 'airflow'
-    hostname = 'postgres'
+    hostname = 'localhost'
+    port = 5437
     database = 'data_warehouse'
 
-    conn_string = f'postgresql://{user}:{passwd}@{hostname}:5432/{database}'
+    conn_string = f'postgresql://{user}:{passwd}@{hostname}:{port}/{database}'
+    return create_engine(conn_string)
 
-    db = create_engine(conn_string)
-    conn = db.connect()
 
-    data.to_sql(table_name, con=conn, if_exists='append',
-                index=False)
+def load(data, table_name):
+    conn = get_connection()
 
-    print("Successfully loaded to Postgres")
+    try:
+        data.to_sql(table_name, conn, if_exists='append', index=False)
+        print("Successfully loaded to PostgreSQL")
+    except Exception as e:
+        print(f"Error loading data to PostgreSQL: {str(e)}")
+    finally:
+        conn.dispose()

@@ -1,6 +1,7 @@
 import finnhub_loader
 import mongodb_loader
 
+
 def extract_load():
     news = finnhub_loader.scrape_news()
 
@@ -8,6 +9,7 @@ def extract_load():
     collection.insert_many(news)
 
     print("Successfully load news to MongoDB")
+
 
 if __name__ == "__main__":
     extract_load()
